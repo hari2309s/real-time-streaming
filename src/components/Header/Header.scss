@@ -1,0 +1,15 @@
+.header {
+  margin: 0 50px auto;
+  padding: 24px 0;
+  display: flex;
+  max-width: var(--max-width);
+  align-self: flex-start;
+
+  .header-title {
+    visibility: hidden;
+  }
+
+  .header-logo {
+    width: 60px;
+  }
+}
