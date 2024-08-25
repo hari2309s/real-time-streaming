@@ -37,13 +37,13 @@ export const Form = ({ isReady, send, stocks }: FormProps) => {
         if (e.target.value.trim().length <= 12) {
             setISIN(e.target.value.toUpperCase());
         }
-    }
+    };
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
         const message = {
-            subscribe: isin
+            subscribe: isin,
         };
 
         if (isReady && isin.length === 12) {
@@ -51,13 +51,26 @@ export const Form = ({ isReady, send, stocks }: FormProps) => {
         }
 
         setISIN('');
-    }
+    };
 
-    return <form className='form'>
-        <Textfield id='isin-input' label='ISIN Code' placeholder='Ex. DE000BASF111' value={isin}
-            errorMessage={error} onChange={handleChange} />
-        <Button type='submit' color='var(--color-primary-green4)' disabled={!!(isin.length !== 12 || error || !isReady)}
-            onClick={handleSubmit}>Subscribe</Button>
-    </form>
-}
-
+    return (
+        <form className="form">
+            <Textfield
+                id="isin-input"
+                label="ISIN Code"
+                placeholder="Ex. DE000BASF111"
+                value={isin}
+                errorMessage={error}
+                onChange={handleChange}
+            />
+            <Button
+                type="submit"
+                color="var(--color-primary-green4)"
+                disabled={!!(isin.length !== 12 || error || !isReady)}
+                onClick={handleSubmit}
+            >
+                Subscribe
+            </Button>
+        </form>
+    );
+};

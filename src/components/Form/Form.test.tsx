@@ -1,12 +1,12 @@
-import { describe, expect } from "vitest";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import React from "react";
-import { Form } from "./Form";
+import { describe, expect } from 'vitest';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import { Form } from './Form';
 
 describe('Form component ', () => {
     test('should render the component properly with its props ', () => {
         const mockFn = vi.fn();
-        render(<Form isReady={true} send={mockFn} stocks={[]} />)
+        render(<Form isReady={true} send={mockFn} stocks={[]} />);
 
         expect(screen.getByLabelText('ISIN Code')).toBeInTheDocument();
 
@@ -23,7 +23,7 @@ describe('Form component ', () => {
 
     test('when a valid, unique ISIN Code is entered the Subscribe button becomes enabled ', () => {
         const mockFn = vi.fn();
-        render(<Form isReady={true} send={mockFn} stocks={[]} />)
+        render(<Form isReady={true} send={mockFn} stocks={[]} />);
 
         const inputElement = screen.getByRole('textbox');
         expect(inputElement).toHaveValue('');
@@ -40,7 +40,7 @@ describe('Form component ', () => {
 
     test('when an invalid ISIN Code is entered the Subscribe button stays disabled and the invalid error message is shown ', async () => {
         const mockFn = vi.fn();
-        render(<Form isReady={true} send={mockFn} stocks={[]} />)
+        render(<Form isReady={true} send={mockFn} stocks={[]} />);
 
         const inputElement = screen.getByRole('textbox');
         expect(inputElement).toHaveValue('');
@@ -60,7 +60,20 @@ describe('Form component ', () => {
 
     test('when a duplicate ISIN Code is entered the Subscribe button stays disabled and the correct error message is thrown ', async () => {
         const mockFn = vi.fn();
-        render(<Form isReady={true} send={mockFn} stocks={[{ isin: 'DE000BASF111', price: 123.456, ask: 123.765, bid: 123.984 }]} />)
+        render(
+            <Form
+                isReady={true}
+                send={mockFn}
+                stocks={[
+                    {
+                        isin: 'DE000BASF111',
+                        price: 123.456,
+                        ask: 123.765,
+                        bid: 123.984,
+                    },
+                ]}
+            />,
+        );
 
         const inputElement = screen.getByRole('textbox');
         expect(inputElement).toHaveValue('');
@@ -74,13 +87,28 @@ describe('Form component ', () => {
 
         await waitFor(() => {
             expect(subscribeButton).toBeDisabled();
-            expect(screen.getByText('Duplicate ISIN Code!')).toBeInTheDocument();
+            expect(
+                screen.getByText('Duplicate ISIN Code!'),
+            ).toBeInTheDocument();
         });
     });
 
     test('when the socket connection is ready and a valid, unique ISIN Code is entered, button click should call the send method ', async () => {
         const mockFn = vi.fn();
-        render(<Form isReady={true} send={mockFn} stocks={[{ isin: 'DE000BASF111', price: 123.456, ask: 123.765, bid: 123.984 }]} />)
+        render(
+            <Form
+                isReady={true}
+                send={mockFn}
+                stocks={[
+                    {
+                        isin: 'DE000BASF111',
+                        price: 123.456,
+                        ask: 123.765,
+                        bid: 123.984,
+                    },
+                ]}
+            />,
+        );
 
         const inputElement = screen.getByRole('textbox');
         expect(inputElement).toHaveValue('');
@@ -95,4 +123,4 @@ describe('Form component ', () => {
         fireEvent.click(subscribeButton);
         expect(mockFn).toHaveBeenCalledTimes(1);
     });
-})
+});

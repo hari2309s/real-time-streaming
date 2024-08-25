@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import './Button.scss';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,5 +7,9 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = ({ children, color, ...rest }: ButtonProps) => {
-    return <button className="button" style={{ background: color }} {...rest}>{children}</button>
-}
+    return (
+        <button className="button" style={{ background: color }} {...rest}>
+            {children}
+        </button>
+    );
+};

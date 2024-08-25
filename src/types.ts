@@ -1,6 +1,6 @@
 export interface Instrument {
-  isin: string;
-  price: number;
-  bid: number;
-  ask: number;
+    isin: string;
+    price: number;
+    bid: number;
+    ask: number;
 }

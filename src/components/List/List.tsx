@@ -11,21 +11,43 @@ interface ListProps {
 }
 
 export const List = ({ isReady, stocks, send, setStocks }: ListProps) => {
-    const handleUnsubscribe = (e: React.MouseEvent<HTMLButtonElement>, isin: string) => {
+    const handleUnsubscribe = (
+        e: React.MouseEvent<HTMLButtonElement>,
+        isin: string,
+    ) => {
         const message = {
-            unsubscribe: isin
+            unsubscribe: isin,
         };
 
         if (isReady) {
             send(JSON.stringify(message));
-            setStocks(prevStocks => prevStocks.filter(stock => stock.isin !== isin));
+            setStocks(prevStocks =>
+                prevStocks.filter(stock => stock.isin !== isin),
+            );
         }
-    }
+    };
 
-    return <section className='stocks-container'>
-        <h3>My stocks</h3>
-        <article className='list'>{stocks.length > 0 ? <ul>{stocks.map(stock => <Card key={stock.isin}
-            handleUnsubscribe={handleUnsubscribe} {...stock} />)}</ul> : <span className='empty-info' data-testid='empty-message'>Your watchlist is empty.
-                Please subscribe to some stocks!</span>}</article>
-    </section>
-}
+    return (
+        <section className="stocks-container">
+            <h3>My stocks</h3>
+            <article className="list">
+                {stocks.length > 0 ? (
+                    <ul>
+                        {stocks.map(stock => (
+                            <Card
+                                key={stock.isin}
+                                handleUnsubscribe={handleUnsubscribe}
+                                {...stock}
+                            />
+                        ))}
+                    </ul>
+                ) : (
+                    <span className="empty-info" data-testid="empty-message">
+                        Your watchlist is empty. Please subscribe to some
+                        stocks!
+                    </span>
+                )}
+            </article>
+        </section>
+    );
+};
