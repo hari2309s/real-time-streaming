@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.67a05b13.css",
+    "main.js": "/static/js/main.f05ad0e3.js",
+    "static/js/453.7dc4a9a5.chunk.js": "/static/js/453.7dc4a9a5.chunk.js",
+    "static/media/DINNextLTPro-Bold.woff": "/static/media/DINNextLTPro-Bold.8c2bfc5ade5f7703b826.woff",
+    "static/media/DINNextLTPro-Regular.woff": "/static/media/DINNextLTPro-Regular.d1454dd84413c077fdfa.woff",
+    "static/media/DINNextLTPro-Medium.woff": "/static/media/DINNextLTPro-Medium.fc2cf687784a0a9c742f.woff",
+    "index.html": "/index.html",
+    "main.67a05b13.css.map": "/static/css/main.67a05b13.css.map",
+    "main.f05ad0e3.js.map": "/static/js/main.f05ad0e3.js.map",
+    "453.7dc4a9a5.chunk.js.map": "/static/js/453.7dc4a9a5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.67a05b13.css",
+    "static/js/main.f05ad0e3.js"
+  ]
+}
