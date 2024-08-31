@@ -1,11 +1,10 @@
-import { describe, expect, vi } from 'vitest';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { Textfield } from './TextField';
 
 describe('TextField component ', () => {
     test('should render the component properly with its props ', () => {
-        const mockFn = vi.fn();
+        const mockFn = jest.fn();
         render(
             <Textfield
                 id="isin-field"

@@ -1,12 +1,11 @@
-import { describe, expect, vi } from 'vitest';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { List } from './List';
 
 describe('List component ', () => {
     test('should render the component properly with its props ', () => {
-        const mockFn = vi.fn();
+        const mockFn = jest.fn();
 
         render(
             <List
@@ -32,7 +31,7 @@ describe('List component ', () => {
     });
 
     test('should render the empty info message when the stocks array is empty ', () => {
-        const mockFn = vi.fn();
+        const mockFn = jest.fn();
 
         render(
             <List
@@ -50,7 +49,7 @@ describe('List component ', () => {
     });
 
     test('should not be able to call the send method when the connection is not ready ', () => {
-        const mockFn = vi.fn();
+        const mockFn = jest.fn();
 
         render(
             <List

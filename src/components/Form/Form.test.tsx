@@ -1,11 +1,10 @@
-import { describe, expect } from 'vitest';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { Form } from './Form';
 
 describe('Form component ', () => {
     test('should render the component properly with its props ', () => {
-        const mockFn = vi.fn();
+        const mockFn = jest.fn();
         render(<Form isReady={true} send={mockFn} stocks={[]} />);
 
         expect(screen.getByLabelText('ISIN Code')).toBeInTheDocument();
@@ -22,7 +21,7 @@ describe('Form component ', () => {
     });
 
     test('when a valid, unique ISIN Code is entered the Subscribe button becomes enabled ', () => {
-        const mockFn = vi.fn();
+        const mockFn = jest.fn();
         render(<Form isReady={true} send={mockFn} stocks={[]} />);
 
         const inputElement = screen.getByRole('textbox');
@@ -39,7 +38,7 @@ describe('Form component ', () => {
     });
 
     test('when an invalid ISIN Code is entered the Subscribe button stays disabled and the invalid error message is shown ', async () => {
-        const mockFn = vi.fn();
+        const mockFn = jest.fn();
         render(<Form isReady={true} send={mockFn} stocks={[]} />);
 
         const inputElement = screen.getByRole('textbox');
@@ -59,7 +58,7 @@ describe('Form component ', () => {
     });
 
     test('when a duplicate ISIN Code is entered the Subscribe button stays disabled and the correct error message is thrown ', async () => {
-        const mockFn = vi.fn();
+        const mockFn = jest.fn();
         render(
             <Form
                 isReady={true}
@@ -94,7 +93,7 @@ describe('Form component ', () => {
     });
 
     test('when the socket connection is ready and a valid, unique ISIN Code is entered, button click should call the send method ', async () => {
-        const mockFn = vi.fn();
+        const mockFn = jest.fn();
         render(
             <Form
                 isReady={true}
