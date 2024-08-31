@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { useEffect, useState } from 'react';
 import { WEB_SOCKET_URL } from '../constants';
 import { Instrument } from '../types';
